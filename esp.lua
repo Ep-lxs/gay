@@ -84,7 +84,7 @@ local Visuals = Main.New({
 
 local FillColor = Visuals.ColorPicker({
 	Text = "FillColor",
-	Default = Color3.fromRGB(0, 0, 0),
+	Default = settings.FillColor,
 	Callback = function(Value)
 		settings.FillColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
 		save(settings)
@@ -106,12 +106,12 @@ local FillTransparency = Y.Slider({
 	end,
 	Min = 0,
 	Max = 1,
-	Def = 0.6,
+	Def = settings.FillTransparency
 })
 
 local OutlineColor = Visuals.ColorPicker({
 	Text = "OutlineColor",
-	Default = Color3.fromRGB(0, 0, 0),
+	Default = settings.OutlineColor
 	Callback = function(Value)
 		settings.OutlineColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
 		save(settings)
@@ -133,7 +133,7 @@ local OutlineTransparency = Y.Slider({
 	end,
 	Min = 0,
 	Max = 1,
-	Def = 0,
+	Def = settings.OutlineTransparency
 })
 
 RunService.Heartbeat:Connect(function()
