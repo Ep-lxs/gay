@@ -58,7 +58,7 @@ end)
 
 
 local Main = Material.Load({
-	Title = "ep-lxs/gay/main/esp.lua",
+	Title = "Ep-lxs/gay/main/esp.lua",
 	Style = 1,
 	SizeX = 300,
 	SizeY = 400,
