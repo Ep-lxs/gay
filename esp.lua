@@ -3,7 +3,7 @@
 --end
 --getgenv().loaded = true
 
-local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua"))()
 local Util = require("./util.lua")
 
 local Highlights = {}
@@ -19,127 +19,99 @@ if not readfile("Ep-lxs/gay/esp") then
 end
 getgenv().settings = Util.HttpService:JSONDecode(readfile("Ep-lxs/gay/esp"))
 
+function Create(className, properties)
+	local instance = Instance.new(className)
+
+	for property, value in next, properties do 
+		instance[property] = value
+	end
+
+	return instance
+end
+
 function createHighlight()
-    local highlight = Instance.new("Highlight")
-    
-    for property, value in next, settings do 
-        highlight[property] = value
-    end
+    local highlight = Create("Highlight", {
+		DepthMode = 0,
+		FillColor = Color3.fromRGB(0, 0, 0),
+		FillTransparency = 0.6,
+		OutlineColor = Color3.fromRGB(0, 0, 0),
+		OutlineTransparency = 0,		
+	})
 
     return highlight
 end
 
-function connect(player)
+function ESP(player)
+	if (player == Util.Player) or (Highlights[player]) then return end
+	if (not player.Character) then return end
+
+	local highlight = createHighlight()
+	highlight.Adornee = player.Character
+	highlight.Parent = Util.CoreGui
+	highlight.Enabled = Library.Flags["ESP"]
+
+	Highlights[player] = highlight
+end
+
+function Connect(player)
     if player == Util.Player then return end
 
-    local function characterAdded(character)
-        if not Highlights[player.UserId] then
-            local highlight = createHighlight()
-            highlight.Adornee = character
-            highlight.Parent = CoreGui
-            Highlights[player.UserId] = highlight
-        end
+    local function CharacterAdded(character)
+        if Highlights[player] then
+			Highlights[player].Adornee = character 
+		else
+			ESP(player)
+		end
     end
 
     if player.Character then
-        characterAdded(player.Character)
+        CharacterAdded(player.Character)
     end
-    player.CharacterAdded:Connect(characterAdded)
-end
 
-function save(data)
-	pcall(function()
-		writefile("Ep-lxs/gay/esp", Util.HttpService:JSONEncode(data))
-	end)
+    player.CharacterAdded:Connect(CharacterAdded)
 end
 
 for _, player in next, Util.Players:GetPlayers() do
-    connect(player)
+    Connect(player)
 end
 
-Util.Players.PlayerAdded:Connect(connect)
-
+Util.Players.PlayerAdded:Connect(Connect)
 Util.Players.PlayerRemoving:Connect(function(player)
-    if Highlights[player.UserId] then
-        Highlights[player.UserId]:Destroy()
-        Highlights[player.UserId] = nil
+    if Highlights[player] then
+        Highlights[player]:Destroy()
+        Highlights[player] = nil
     end
 end)
 
-
-local Main = Material.Load({
-	Title = "Ep-lxs/gay/main/esp.lua",
-	Style = 1,
-	SizeX = 300,
-	SizeY = 400,
-	Theme = "Dark",
-	ColorOverrides = {
-		--MainFrame = Color3.fromRGB(235,235,235)
-	}
-})
-
-local Visuals = Main.New({
-	Title = "Visuals"
-})
-
-local FillColor = Visuals.ColorPicker({
-	Text = "FillColor",
-	Default = settings.FillColor,
-	Callback = function(Value)
-		settings.FillColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
-		save(settings)
-	end,
-	Menu = {
-		Information = function(self)
-			X.Banner({
-				Text = "FillColor"
-			})
-		end
-	}
-})
-
-local FillTransparency = Y.Slider({
-	Text = "FillTransparency",
-	Callback = function(Value)
-		settings.FillTransparency = Value
-		save(settings)
-	end,
-	Min = 0,
-	Max = 1,
-	Def = settings.FillTransparency
-})
-
-local OutlineColor = Visuals.ColorPicker({
-	Text = "OutlineColor",
-	Default = settings.OutlineColor
-	Callback = function(Value)
-		settings.OutlineColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
-		save(settings)
-	end,
-	Menu = {
-		Information = function(self)
-			X.Banner({
-				Text = "OutlineColor"
-			})
-		end
-	}
-})
-
-local OutlineTransparency = Y.Slider({
-	Text = "OutlineTransparency",
-	Callback = function(Value)
-		settings.OutlineTransparency = Value
-		save(settings)
-	end,
-	Min = 0,
-	Max = 1,
-	Def = settings.OutlineTransparency
-})
-
 RunService.Heartbeat:Connect(function()
-	for _,highlight in next, Highlights do
-		for property, value in next, settings do 
-			highlight[property] = value
+	for player, highlight in next, Highlights do
+		highlight.FillColor = player.TeamColor.Color
+		highlight.FillTransparency = Library.Flags["FillTransparency"]
+		highlight.OutlineColor = Library.Flags["OutlineColor"]
+		highlight.OutlineTransparency = Library.Flags["OutlineTransparency"]
+	end
+end)
+
+local Window = Library:New({
+   Name = "Ep-lxs/gay",
+   FolderToSave = "Ep-lxs/gay"
+})
+
+local Visuals = Window:Tab("Visuals")
+
+local ESP = Visuals:Section("ESP")
+
+ESP:Toggle("Enabled", false, "ESP", function(bool) 
+	if bool then
+		for _, highlight in next, Highlights do 
+			highlight.Enabled = true
+		end
+	else
+		for _, highlight in next, Highlights do 
+			highlight.Enabled = false
 		end
 	end
 end)
+ESP:Slider("FillTransparency", 0.6, 1, 0, 0.05, "FillTransparency", function(t) end)
+ESP:Colorpicker("OutlineColor", Color3.fromRGB(0, 0, 0), "OutlineColor", function(t) end)
+ESP:Slider("OutlineTransparency", 0, 1, 0, 0.05, "OutlineTransparency", function(t) end)
