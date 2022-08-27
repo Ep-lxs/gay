@@ -8,16 +8,29 @@ local Util = require("./util.lua")
 
 local Highlights = {}
 
-if not readfile("Ep-lxs/gay/esp") then
-	save({
-		DepthMode = 0,
-		FillColor = Color3.fromRGB(0, 0, 0),
-		FillTransparency = 0.6,
-		OutlineColor = Color3.fromRGB(0, 0, 0)
-		OutlineTransparency = 0
-	})
-end
-getgenv().settings = Util.HttpService:JSONDecode(readfile("Ep-lxs/gay/esp"))
+local Window = Library:New({
+	Name = "Ep-lxs/gay",
+	FolderToSave = "Ep-lxs/gay"
+ })
+ 
+ local Visuals = Window:Tab("Visuals")
+ 
+ local ESP = Visuals:Section("ESP")
+ 
+ ESP:Toggle("Enabled", false, "ESP", function(bool) 
+	 if bool then
+		 for _, highlight in next, Highlights do 
+			 highlight.Enabled = true
+		 end
+	 else
+		 for _, highlight in next, Highlights do 
+			 highlight.Enabled = false
+		 end
+	 end
+ end)
+ ESP:Slider("FillTransparency", 0.6, 1, 0, 0.05, "FillTransparency", function(t) end)
+ ESP:Colorpicker("OutlineColor", Color3.fromRGB(0, 0, 0), "OutlineColor", function(t) end)
+ ESP:Slider("OutlineTransparency", 0, 1, 0, 0.05, "OutlineTransparency", function(t) end) 
 
 function Create(className, properties)
 	local instance = Instance.new(className)
@@ -32,10 +45,10 @@ end
 function createHighlight()
     local highlight = Create("Highlight", {
 		DepthMode = 0,
-		FillColor = Color3.fromRGB(0, 0, 0),
-		FillTransparency = 0.6,
-		OutlineColor = Color3.fromRGB(0, 0, 0),
-		OutlineTransparency = 0,		
+		FillColor = Library.Flags["FillColor"],
+		FillTransparency = Library.Flags["FillTransparency"],
+		OutlineColor = Library.Flags["OutlineColor"],
+		OutlineTransparency = Library.Flags["OutlineTransparency"],		
 	})
 
     return highlight
@@ -91,27 +104,3 @@ Util.RunService.Heartbeat:Connect(function()
 		highlight.OutlineTransparency = Library.Flags["OutlineTransparency"]
 	end
 end)
-
-local Window = Library:New({
-   Name = "Ep-lxs/gay",
-   FolderToSave = "Ep-lxs/gay"
-})
-
-local Visuals = Window:Tab("Visuals")
-
-local ESP = Visuals:Section("ESP")
-
-ESP:Toggle("Enabled", false, "ESP", function(bool) 
-	if bool then
-		for _, highlight in next, Highlights do 
-			highlight.Enabled = true
-		end
-	else
-		for _, highlight in next, Highlights do 
-			highlight.Enabled = false
-		end
-	end
-end)
-ESP:Slider("FillTransparency", 0.6, 1, 0, 0.05, "FillTransparency", function(t) end)
-ESP:Colorpicker("OutlineColor", Color3.fromRGB(0, 0, 0), "OutlineColor", function(t) end)
-ESP:Slider("OutlineTransparency", 0, 1, 0, 0.05, "OutlineTransparency", function(t) end)
