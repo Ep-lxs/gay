@@ -83,7 +83,7 @@ Util.Players.PlayerRemoving:Connect(function(player)
     end
 end)
 
-RunService.Heartbeat:Connect(function()
+Util.RunService.Heartbeat:Connect(function()
 	for player, highlight in next, Highlights do
 		highlight.FillColor = player.TeamColor.Color
 		highlight.FillTransparency = Library.Flags["FillTransparency"]
