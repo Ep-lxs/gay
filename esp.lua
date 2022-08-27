@@ -1,21 +1,25 @@
-getgenv().settings = {
-    DepthMode = 0,
-    FillColor = Color3.fromRGB(0, 0, 0),
-    FillTransparency = 0.6,
-    OutlineColor = Color3.fromRGB(0, 0, 0)
-    OutlineTransparency = 0
-}
+--if loaded then
+--	return 
+--end
+--getgenv().loaded = true
 
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
-local Players = game:GetService("Players")
-local CoreGui = game:GetService("CoreGui")
-local RunService = game:GetService("RunService")
-
-local Player = Players.LocalPlayer
+local Util = require("./util.lua")
 
 local Highlights = {}
 
-local function createHighlight()
+if not readfile("Ep-lxs/gay/esp") then
+	save({
+		DepthMode = 0,
+		FillColor = Color3.fromRGB(0, 0, 0),
+		FillTransparency = 0.6,
+		OutlineColor = Color3.fromRGB(0, 0, 0)
+		OutlineTransparency = 0
+	})
+end
+getgenv().settings = Util.HttpService:JSONDecode(readfile("Ep-lxs/gay/esp"))
+
+function createHighlight()
     local highlight = Instance.new("Highlight")
     
     for property, value in next, settings do 
@@ -25,8 +29,8 @@ local function createHighlight()
     return highlight
 end
 
-local function connect(player)
-    if player == Player then return end
+function connect(player)
+    if player == Util.Player then return end
 
     local function characterAdded(character)
         if not Highlights[player.UserId] then
@@ -43,13 +47,19 @@ local function connect(player)
     player.CharacterAdded:Connect(characterAdded)
 end
 
-for _, player in next, Players:GetPlayers() do
+function save(data)
+	pcall(function()
+		writefile("Ep-lxs/gay/esp", Util.HttpService:JSONEncode(data))
+	end)
+end
+
+for _, player in next, Util.Players:GetPlayers() do
     connect(player)
 end
 
-Players.PlayerAdded:Connect(connect)
+Util.Players.PlayerAdded:Connect(connect)
 
-Players.PlayerRemoving:Connect(function(player)
+Util.Players.PlayerRemoving:Connect(function(player)
     if Highlights[player.UserId] then
         Highlights[player.UserId]:Destroy()
         Highlights[player.UserId] = nil
@@ -77,6 +87,7 @@ local FillColor = Visuals.ColorPicker({
 	Default = Color3.fromRGB(0, 0, 0),
 	Callback = function(Value)
 		settings.FillColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
+		save(settings)
 	end,
 	Menu = {
 		Information = function(self)
@@ -91,6 +102,7 @@ local FillTransparency = Y.Slider({
 	Text = "FillTransparency",
 	Callback = function(Value)
 		settings.FillTransparency = Value
+		save(settings)
 	end,
 	Min = 0,
 	Max = 1,
@@ -102,6 +114,7 @@ local OutlineColor = Visuals.ColorPicker({
 	Default = Color3.fromRGB(0, 0, 0),
 	Callback = function(Value)
 		settings.OutlineColor = Color3.fromRGB(Value.R * 255, Value.G * 255, Value.B * 255)
+		save(settings)
 	end,
 	Menu = {
 		Information = function(self)
@@ -116,6 +129,7 @@ local OutlineTransparency = Y.Slider({
 	Text = "OutlineTransparency",
 	Callback = function(Value)
 		settings.OutlineTransparency = Value
+		save(settings)
 	end,
 	Min = 0,
 	Max = 1,
