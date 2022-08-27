@@ -18,6 +18,14 @@ function Util:Refresh()
         Util.WalkSpeed = Util.Humanoid.WalkSpeed
         Util.JumpPower = Util.Humanoid.JumpPower
     end
+
+    function Util.Create(ClassName, Properties)
+        local instance = Instance.new(ClassName)
+
+        for property, value in next, Properties do
+            instance[property] = value
+        end
+    end
 end
 
 Util.RunService.RenderStepped:Connect(function()
