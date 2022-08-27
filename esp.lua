@@ -58,7 +58,7 @@ end)
 
 
 local Main = Material.Load({
-	Title = "ChibuHub",
+	Title = "ep-lxs/gay/main/esp.lua",
 	Style = 1,
 	SizeX = 300,
 	SizeY = 400,
@@ -129,21 +129,3 @@ RunService.Heartbeat:Connect(function()
 		end
 	end
 end)
-
---[[local H = Y.TextField({
-	Text = "Country",
-	Callback = function(Value)
-		print(Value)
-	end,
-	Menu = {
-		GB = function(self)
-			self.SetText("GB")
-		end,
-		JP = function(self)
-			self.SetText("JP")
-		end,
-		KO = function(self)
-			self.SetText("KO")
-		end
-	}
-})]]
