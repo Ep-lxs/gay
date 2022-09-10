@@ -25,6 +25,8 @@ function Util:Refresh()
         for property, value in next, Properties do
             instance[property] = value
         end
+        
+        return instance
     end
 end
 
