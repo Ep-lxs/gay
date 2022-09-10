@@ -8,6 +8,7 @@ function Util:Refresh()
     Util.HttpService = game:GetService("HttpService")
     Util.CoreGui = game:GetService("CoreGui")
     Util.TweenService = game:GetService("TweenService")
+    Util.PathfindingService = game:GetService("PathfindingService")
 
     Util.Player = Util.Players.LocalPlayer
     Util.Character = Util.Player.Character
