@@ -31,6 +31,8 @@ function module:Refresh()
     end
 end
 
+module:Refresh()
+
 module.RunService.RenderStepped:Connect(function()
     module:Refresh()
 end)
