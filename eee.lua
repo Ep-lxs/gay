@@ -1,5 +1,5 @@
 local util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/main/modules/util.lua"))()
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/PoopLibrary/main/Library.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua"))()
 
 local growsInto = {
     ["Apple"] = "Apple Tree",
@@ -31,7 +31,7 @@ getgenv().collect = function()
     end
 end
 
-local Window = library:New({Name = "???", Size = Vector2.new(250, 350), Accent = Color3.fromRGB(49, 106, 212)})
+--[[local Window = library:New({Name = "???", Size = Vector2.new(250, 350), Accent = Color3.fromRGB(49, 106, 212)})
 
 local Main = Window:Page({Name = "Main"})
 
@@ -46,6 +46,30 @@ Autofarm:Button({Name = "Collect", Callback = function()
     collect()
 end})
 Autofarm:Button({Name = "Place 112 plantboxes", Callback = function()
+end})
+
+Window:Initialize()]]
+
+local window = library:New({
+    Name = "???",
+    FolderToSave = "12345"
+ })
+ 
+ local Main = win:Tab("Main")
+ 
+ local sec = Main:Section("Autofarm")
+ 
+ --sec:Dropdown(title <string>,options <table>,default <string>, flag <string>, callback <function>)
+ sec:Dropdown("Dropdown", {"Bloodfruit", "Bluefruit", "Berry", "Apple", "Lemon"},"Bloodfruit","Dropdown", function(value)
+    settings.Autofarm.fruit = value
+ end)
+ sec:Button("Plant", function()
+    plant()
+ end)
+ sec:Button("Collect", function()
+    collect()
+ end)
+ sec:Button("Place 112 plant boxes", function()
     for y = -3.5, 0, 0.5 do 
         for i = 9, 6, -0.5 do
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
@@ -72,6 +96,4 @@ Autofarm:Button({Name = "Place 112 plantboxes", Callback = function()
             )
         end
     end
-end})
-
-Window:Initialize()
+ end)
