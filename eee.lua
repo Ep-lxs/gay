@@ -4,9 +4,9 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas
 local growsInto = {
     ["Apple"] = "Apple Tree",
     ["Lemon"] = "Lemon Tree",
-    ["Bloodfruit"] = "Bloodfruit Bush"
-    ["Bluefruit"] = "Bluefruit Bush"
-    ["Berry"] = "Berry Bush"
+    ["Bloodfruit"] = "Bloodfruit Bush",
+    ["Bluefruit"] = "Bluefruit Bush",
+    ["Berry"] = "Berry Bush",
 }
 
 getgenv().settings = {
