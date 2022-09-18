@@ -1,4 +1,4 @@
-local util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/bloc/main/modules/util.lua"))()
+local util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/main/modules/util.lua"))()
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/PoopLibrary/main/Library.lua"))()
 
 local growsInto = {
@@ -31,7 +31,7 @@ getgenv().collect = function()
     end
 end
 
-local Window = Library:New({Name = "???", Accent = Color3.fromRGB(49, 106, 212)})
+local Window = library:New({Name = "???", Accent = Color3.fromRGB(49, 106, 212)})
 
 local Main = Window:Page({Name = "Main"})
 
