@@ -1,4 +1,69 @@
--- hi
+-- variables
+local util = require("./modules/util.lua")
+local colors = require("./modules/colors.lua")
+
+local highlight = {
+    instances = {},
+}
+
+local ui_holder = util.Create("ScreenGui", {
+    Name = Util.HttpService:GenerateGUID(),
+    Parent = util.CoreGui,
+})
+
+-- functions
+function highlight:Create(player)
+    local character = player.Character
+
+    instances[player] = util.Create("Highlight", {
+        Adornee = character,
+        
+    })
+end
+
+function highlight:Destroy(player)
+    instances[player]:Destroy()
+    instances[player] = nil
+end
+
+-- code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--[[
 local Util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/main/util.lua"))()
 
 local Prefix = "/"
@@ -31,5 +96,5 @@ Util.Player.Chatted:Connect(function(message)
             end
         end
     end
-end)
+end)]]
 

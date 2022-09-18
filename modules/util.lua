@@ -11,6 +11,7 @@ function module:Refresh()
     module.PathfindingService = game:GetService("PathfindingService")
 
     module.Player = module.Players.LocalPlayer
+    module.Mouse = module.Player:GetMouse()
     module.Character = module.Player.Character
     module.Humanoid = module.Character.Humanoid
     if module.Humanoid ~= nil then
