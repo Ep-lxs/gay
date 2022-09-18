@@ -31,10 +31,6 @@ function module:Refresh()
         return instance
         
     end
-
-    function module.RGB(Color, Value)
-        return Color3.fromRGB(Color.R * Value, Color.G * Value, Color.B * Value)
-    end
 end
 
 module:Refresh()

@@ -6,6 +6,10 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas
     collect = "]"
 }]]
 
+getgenv().settings = {
+    fruit = "Bloodfruit"
+}
+
 getgenv().plant = function()
     for _, v in pairs(workspace.Deployables:GetChildren()) do
         if v.Name == "Plant Box" and (util.Character.Head.Position - v.PrimaryPart.Position).magnitude < 69 then
@@ -21,8 +25,6 @@ getgenv().collect = function()
         end
     end
 end
-
-
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local RootPart = LocalPlayer.Character.HumanoidRootPart
 local cframe = RootPart.CFrame
@@ -36,111 +38,26 @@ Remote:FireServer("Plant Box", cframe * CFrame.new(7.5, -3.5, -0), 0)
 Remote:FireServer("Plant Box", cframe * CFrame.new(7, -3.5, -0), 0)
 Remote:FireServer("Plant Box", cframe * CFrame.new(6.5, -3.5, -0), 0)
 Remote:FireServer("Plant Box", cframe * CFrame.new(6, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(9, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(9, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(9, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(8, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(7, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(6, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-9, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8.5, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7.5, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6.5, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6, -3.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-9, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6.5, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6, -2, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-9, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6.5, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6, -3, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-9, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-8, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-7, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6.5, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-6, -2.5, -0), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, -6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, -6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, -6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, -6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3.5, 6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -3, 6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2.5, 6), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 9), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 8.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 8), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 7.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 7), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 6.5), 0)
-Remote:FireServer("Plant Box", cframe * CFrame.new(-0, -2, 6), 0)
+
+local util = loadstring(game:HttpGet("raw.githubusercontent.com/Ep-lxs/gay/blob/main/modules/util.lua"))
+
+for y = -3.5, -2, 0.5 do 
+    for x = 9, 6, -0.5 do
+        util.ReplicatedStorage.Events.PlaceStructure:FireServer(
+            "Plant Box",
+            util.Character.HumanoidRootPart.CFrame * CFrame.new(x, y, 0),
+            0
+        )
+    end
+end
+
+Remote:FireServer("Plant Box", cframe * CFrame.new(9, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(8.5, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(8, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(7.5, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(7, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(6.5, -3.5, -0), 0)
+Remote:FireServer("Plant Box", cframe * CFrame.new(6, -3.5, -0), 0)
 
 --[[util.Mouse.KeyUp:connect(function(key)
     if key == keys.plant then
