@@ -1,4 +1,4 @@
-local util = loadstring(game:HttpGet("raw.githubusercontent.com/Ep-lxs/gay/blob/main/modules/util.lua"))()
+local util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/bloc/main/modules/util.lua"))()
 
 local guis = util.ReplicatedStorage:WaitForChild("Guis")
 
