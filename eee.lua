@@ -39,6 +39,12 @@ local Autofarm = Main:Section({Name = "Autofarm", Side = "Left"})
 Autofarm:Dropdown({Name = "Fruit", Options = {"Bloodfruit", "Bluefruit", "Berry", "Lemon", "Apple"}, Default = "Bloodfruit", Pointer = "Fruit", Callback = function(v)
     settings.Autofarm.fruit = v
 end})
+Autofarm:Button({Name = "Plant", Callback = function()
+    plant()
+end})
+Autofarm:Button({Name = "Collect", Callback = function()
+    collect()
+end})
 Autofarm:Button({Name = "Place 112 plantboxes", Callback = function()
     for y = -3.5, 0, 0.5 do 
         for i = 9, 6, -0.5 do
@@ -66,12 +72,6 @@ Autofarm:Button({Name = "Place 112 plantboxes", Callback = function()
             )
         end
     end
-end})
-Autofarm:Button({Name = "Plant", Callback = function()
-    plant()
-end})
-Autofarm:Button({Name = "Collect", Callback = function()
-    collect()
 end})
 
 Window:Initialize()
