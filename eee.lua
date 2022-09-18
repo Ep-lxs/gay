@@ -31,7 +31,7 @@ getgenv().collect = function()
     end
 end
 
-local Window = library:New({Name = "???", Accent = Color3.fromRGB(49, 106, 212)})
+local Window = library:New({Name = "???", Size = Vector2.new(250, 350), Accent = Color3.fromRGB(49, 106, 212)})
 
 local Main = Window:Page({Name = "Main"})
 
