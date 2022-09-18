@@ -35,7 +35,7 @@ local Window = Library:New({Name = "???", Accent = Color3.fromRGB(49, 106, 212)}
 
 local Main = Window:Page({Name = "Main"})
 
-local Autofarm = Autofarm:Section({Name = "Autofarm", Side = "Left"})
+local Autofarm = Main:Section({Name = "Autofarm", Side = "Left"})
 Autofarm:Dropdown({Name = "Fruit", Options = {"Bloodfruit", "Bluefruit", "Berry", "Lemon", "Apple"}, Default = "Bloodfruit", Pointer = "Fruit", Callback = function(v)
     settings.Autofarm.fruit = v
 end})
