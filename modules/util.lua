@@ -43,6 +43,7 @@ function Refresh()
     module.Player = module.Players.LocalPlayer
     module.Mouse = module.Player:GetMouse()
     module.Character = module.Player.Character
+    module.HumanoidRootPart = module.Character.HumanoidRootPart
     module.Humanoid = module.Character.Humanoid
     if module.Humanoid ~= nil then
         module.Health = module.Humanoid.Health
@@ -63,10 +64,8 @@ function Refresh()
 end
 
 Refresh()
-task.spawn(function()
-    while task.wait() do
-        Refresh()
-    end
-end)
+while task.wait() do
+    Refresh()
+end
 
 return module

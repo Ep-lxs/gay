@@ -60,7 +60,7 @@ local window = library:New({
  local sec = Main:Section("Autofarm")
  
  --sec:Dropdown(title <string>,options <table>,default <string>, flag <string>, callback <function>)
- sec:Dropdown("Dropdown", {"Bloodfruit", "Bluefruit", "Berry", "Apple", "Lemon"},"Bloodfruit","Dropdown", function(value)
+ sec:Dropdown("Fruit", {"Bloodfruit", "Bluefruit", "Berry", "Apple", "Lemon"},"Bloodfruit","Dropdown", function(value)
     settings.Autofarm.fruit = value
  end)
  sec:Button("Plant", function()
