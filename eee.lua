@@ -34,7 +34,7 @@ end
 local window = library:New({
     Name = "???",
     FolderToSave = "12345"
- })
+})
  
 local Main = window:Tab("Main")
  

@@ -64,8 +64,10 @@ function Refresh()
 end
 
 Refresh()
-while task.wait() do
-    Refresh()
-end
+coroutine.wrap(function()
+    while task.wait() do
+        Refresh()
+    end
+end)()
 
 return module
