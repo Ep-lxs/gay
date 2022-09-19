@@ -17,7 +17,7 @@ getgenv().settings = {
 
 getgenv().plant = function()
     for _, v in pairs(workspace.Deployables:GetChildren()) do
-        if (v.Name == "Plant Box") and (util.Character.Head.Position - v.PrimaryPart.Position).magnitude < 69 then
+        if (v.Name == "Plant Box") and (util.HumanoidRootPart.Position - v.PrimaryPart.Position).magnitude < 69 then
             util.ReplicatedStorage.Events.InteractStructure:FireServer(v, settings.Autofarm.fruit)
         end
     end
@@ -25,7 +25,7 @@ end
 
 getgenv().collect = function()
     for _, v in pairs(workspace:GetChildren()) do
-        if (v.Name == growsInto[settings.Autofarm.fruit]) and (util.Character.Head.Position - v.PrimaryPart.Position).magnitude < 69 then
+        if (v.Name == growsInto[settings.Autofarm.fruit]) and (util.HumanoidRootPart.Position - v.PrimaryPart.Position).magnitude < 69 then
             util.ReplicatedStorage.Events.Pickup:FireServer(v)
         end
     end
@@ -74,24 +74,24 @@ local window = library:New({
         for i = 9, 6, -0.5 do
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
                 "Plant Box",
-                util.Character.HumanoidRootPart.CFrame * CFrame.new(i, y, 0),
+                util.HumanoidRootPart.CFrame * CFrame.new(i, y, 0),
                 0
             )
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
                 "Plant Box",
-                util.Character.HumanoidRootPart.CFrame * CFrame.new(0, y, i),
+                util.HumanoidRootPart.CFrame * CFrame.new(0, y, i),
                 0
             )
         end
         for i = -9, -6, 0.5 do
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
                 "Plant Box",
-                util.Character.HumanoidRootPart.CFrame * CFrame.new(i, y, 0),
+                util.HumanoidRootPart.CFrame * CFrame.new(i, y, 0),
                 0
             )
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
                 "Plant Box",
-                util.Character.HumanoidRootPart.CFrame * CFrame.new(0, y, i),
+                util.HumanoidRootPart.CFrame * CFrame.new(0, y, i),
                 0
             )
         end
