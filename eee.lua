@@ -1,5 +1,5 @@
 local util = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ep-lxs/gay/main/modules/util.lua"))()
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol"))()
 
 local growsInto = {
     ["Apple"] = "Apple Tree",
@@ -55,7 +55,7 @@ local window = library:New({
     FolderToSave = "12345"
  })
  
- local Main = win:Tab("Main")
+ local Main = window:Tab("Main")
  
  local sec = Main:Section("Autofarm")
  
