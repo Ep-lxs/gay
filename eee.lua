@@ -31,45 +31,25 @@ getgenv().collect = function()
     end
 end
 
---[[local Window = library:New({Name = "???", Size = Vector2.new(250, 350), Accent = Color3.fromRGB(49, 106, 212)})
-
-local Main = Window:Page({Name = "Main"})
-
-local Autofarm = Main:Section({Name = "Autofarm", Side = "Left"})
-Autofarm:Dropdown({Name = "Fruit", Options = {"Bloodfruit", "Bluefruit", "Berry", "Lemon", "Apple"}, Default = "Bloodfruit", Pointer = "Fruit", Callback = function(v)
-    settings.Autofarm.fruit = v
-end})
-Autofarm:Button({Name = "Plant", Callback = function()
-    plant()
-end})
-Autofarm:Button({Name = "Collect", Callback = function()
-    collect()
-end})
-Autofarm:Button({Name = "Place 112 plantboxes", Callback = function()
-end})
-
-Window:Initialize()]]
-
 local window = library:New({
     Name = "???",
     FolderToSave = "12345"
  })
  
- local Main = window:Tab("Main")
+local Main = window:Tab("Main")
  
- local sec = Main:Section("Autofarm")
- 
- --sec:Dropdown(title <string>,options <table>,default <string>, flag <string>, callback <function>)
- sec:Dropdown("Fruit", {"Bloodfruit", "Bluefruit", "Berry", "Apple", "Lemon"},"Bloodfruit","Dropdown", function(value)
+local sec = Main:Section("Autofarm")
+
+sec:Dropdown("Fruit", {"Bloodfruit", "Bluefruit", "Berry", "Apple", "Lemon"},"Bloodfruit","Dropdown", function(value)
     settings.Autofarm.fruit = value
- end)
- sec:Button("Plant", function()
+end)
+sec:Button("Plant", function()
     plant()
- end)
- sec:Button("Collect", function()
+end)
+sec:Button("Collect", function()
     collect()
- end)
- sec:Button("Place 112 plant boxes", function()
+end)
+sec:Button("Place 112 plant boxes", function()
     for y = -3.5, 0, 0.5 do 
         for i = 9, 6, -0.5 do
             util.ReplicatedStorage.Events.PlaceStructure:FireServer(
@@ -96,4 +76,4 @@ local window = library:New({
             )
         end
     end
- end)
+end)
