@@ -10,7 +10,7 @@ function twink.new()
 end
 
 function twink:AddConnection(name, connection: RBXScriptConnection): number
-    table.insert(self._connections, name, connection)
+    self._connections[name] = connection
 end
 
 function twink:RemoveConnection(name, connectionIndex: number): boolean
