@@ -33,3 +33,5 @@ function twink:Destroy()
     self:Reset()
     self._connections = nil
 end
+
+return twink
