@@ -9,11 +9,11 @@ function twink.new()
     }, twink)
 end
 
-function twink:AddConnection(name, connection: RBXScriptConnection): number
+function twink:AddConnection(name: string | number, connection: RBXScriptConnection): number
     self._connections[name] = connection
 end
 
-function twink:RemoveConnection(name, connectionIndex: number): boolean
+function twink:RemoveConnection(name: string | number, connectionIndex: number): boolean
     if self._connections[name] then
         self._connections[name]:Disconnect()
         self._connections[name] = nil
