@@ -10,6 +10,7 @@ function twink.new()
 end
 
 function twink:AddConnection(name: string | number, connection: RBXScriptConnection): number
+    self:RemoveConnection(name)
     self._connections[name] = connection
 end
 
